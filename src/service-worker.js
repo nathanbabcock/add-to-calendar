@@ -9,9 +9,10 @@ chrome.contextMenus.create({
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === "create-gcal-url") {
     chrome.storage.sync.get(["apiKey"], result => {
-      // chrome.tabs.insertCSS({
-      //   code: 'body { cursor: wait; }'
-      // })
+      chrome.scripting.insertCSS({
+        target: { tabId: tab.id },
+        css: 'body { cursor: wait; }'
+      })
       if (result.apiKey === undefined) {
         alert("API key is not set. Please set it in the extension options.")
         chrome.runtime.openOptionsPage()
@@ -62,14 +63,18 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
               if (!url) return alert('Could not parse event from text.')
               if (!url.startsWith('http')) return alert(url)
               chrome.tabs.create({ url })
+              chrome.scripting.insertCSS({
+                target: { tabId: tab.id },
+                css: 'body { cursor: unset; }'
+              })
             })
         } catch (error) {
           alert(error.message)
           console.error(error)
-        } finally {
-          // chrome.tabs.insertCSS({
-          //   code: 'body { cursor: default; }'
-          // })
+          chrome.scripting.insertCSS({
+            target: { tabId: tab.id },
+            css: 'body { cursor: unset; }'
+          })
         }
       }
     })

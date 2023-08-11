@@ -6,7 +6,7 @@
     "service_worker": "src/service-worker.js"
   },
   "description": "Quickly and easily create Google calendar events by simply selecting the details and clicking on a button.",
-  "permissions": ["storage", "tabs", "contextMenus"],
+  "permissions": ["scripting", "activeTab", "storage", "tabs", "contextMenus"],
   "host_permissions": ["*://*/*"],
   "options_page": "src/options.html",
   "action": {
