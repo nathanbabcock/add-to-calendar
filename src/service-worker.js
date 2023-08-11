@@ -31,6 +31,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
           + '- Respond with just the link by itself, as a raw URL.\n'
           + `- Take into account the user's local time is ${localTime} on ${localDate}.\n`
           + '- Include the location of the event if it is provided.\n'
+          + '- Include the full description text given in the description of the event.\n'
           + '- Add an appropriate emoji at the beginning of the title.\n'
           + 'The event description is as follows:\n'
           + '\n'
