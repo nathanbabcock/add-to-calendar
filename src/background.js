@@ -25,19 +25,20 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 
         const model = "gpt-3.5-turbo-0613"
         const prompt = 'Create an "add to google calendar" link '
-          + 'based on the following description. '
-          + 'Respond with just the link by itself. '
-          + `Take into account the user's local time is ${localTime} on ${localDate}. `
-          + 'Include the location of the event if it is provided. '
-          + 'The event description is as follows:'
-          + '\n\n'
+          + 'based on the following description:\n'
+          + '- Respond with just the link by itself.\n'
+          + `- Take into account the user's local time is ${localTime} on ${localDate}.\n`
+          + '- Include the location of the event if it is provided.\n'
+          + '- Add an appropriate emoji at the beginning of the title.\n'
+          + 'The event description is as follows:\n'
+          + '\n'
           + info.selectionText
 
         const messages = [
           { role: 'user', content: prompt }
         ]
 
-        // const max_tokens = 256
+        console.log({ prompt })
 
         try {
           fetch(endpoint, {
