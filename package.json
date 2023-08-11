@@ -1,13 +1,9 @@
 {
   "name": "add-to-calendar",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
+  "author": "Nathan Babcock",
+  "description": "Chrome extension to create Google calendar events from selected text.",
+  "main": "src/service-worker.js",
   "license": "ISC",
   "devDependencies": {
     "@types/chrome": "^0.0.243",

@@ -1,7 +1,6 @@
 # Add To Calendar 📆
 
-Quickly and easily create Google calendar events by simply simply selecting a
-text and clicking a button.
+Chrome extension to create Google calendar events from selected text.
 
 Forked from <https://github.com/htadashi/GPT3-Event-Scheduler>:
 
