@@ -1,3 +1,5 @@
+console.log('Add To Calendar service worker started')
+
 chrome.contextMenus.create({
   id: "create-gcal-url",
   title: "Create Google Calendar event",
@@ -26,7 +28,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
         const model = "gpt-3.5-turbo-0613"
         const prompt = 'Create an "add to google calendar" link '
           + 'based on the following description:\n'
-          + '- Respond with just the link by itself.\n'
+          + '- Respond with just the link by itself, as a raw URL.\n'
           + `- Take into account the user's local time is ${localTime} on ${localDate}.\n`
           + '- Include the location of the event if it is provided.\n'
           + '- Add an appropriate emoji at the beginning of the title.\n'
@@ -56,6 +58,8 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
             .then(data => {
               const url = data.choices[0].message.content
               console.log({ url })
+              if (!url) return alert('Could not parse event from text.')
+              if (!url.startsWith('http')) return alert(url)
               chrome.tabs.create({ url })
             })
         } catch (error) {
