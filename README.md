@@ -26,4 +26,11 @@ To install the extension:
 
 - [ ] Parse location and determine exact address
 - [ ] Determine timezone from location and convert if needed
-- [ ] Automatically find website link(s) if applicable
+- [ ] Handle recurrence
+- [ ] Probably port to OpenAI function calls and construct the URL manually
+- [ ] Add entire selected text to calendar description (explicitly)
+- [ ] (later) Automatically find website link(s)
+
+## See also
+
+- [List of all known "create event" URL parameters](https://github.com/InteractionDesignFoundation/add-event-to-calendar-docs/blob/main/services/google.md)
